@@ -9,7 +9,8 @@ export function bookEndList(numbers: number[]): number[] {
     if (numbers.length == 1) {
         newArray = [...numbers, ...numbers];
     } else if (numbers.length > 1) {
-        newArray = [numbers[0], numbers[numbers.length - 1]];
+        const copied: number[] = [...numbers];
+        newArray = [copied[0], copied[numbers.length - 1]];
     }
     return newArray;
 }
@@ -28,7 +29,10 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const integers = numbers.map((a_string: string): number =>
+        !Number.isNaN(parseInt(a_string)) ? parseInt(a_string) : 0
+    );
+    return integers;
 }
 
 /**
