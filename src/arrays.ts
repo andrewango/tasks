@@ -93,6 +93,7 @@ export function allRGB(colors: string[]): boolean {
             (color: string): boolean =>
                 color != "red" && color != "blue" && color != "green"
         );
+
         let a: boolean;
         if (notRGB.length === 0) {
             a = true;
@@ -111,7 +112,18 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    if (addends.length === 0) {
+        return "0=0";
+    } else {
+        const sum = addends.reduce(
+            (total: number, num: number) => total + num,
+            0
+        );
+        const s = addends.join("+");
+        s.slice(addends.length - 1, addends.length - 1);
+        const eqxn = sum + "=" + s;
+        return eqxn;
+    }
 }
 
 /**
@@ -124,5 +136,21 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    // first, copy array over
+    // iterate over new arr, if < 0 using findIndex, then and summate with reduce() all numbers up to not including that index
+    // Use splice to insert the sum after that index
+    // if index === -1, no match is found --> reduce normally and append to end of list.
+    const arr = [...values];
+    const first_negative = arr.findIndex((value: number): boolean => value < 0);
+    let sum = 0;
+    if (first_negative === -1) {
+        sum = arr.reduce((total: number, num: number) => total + num, 0);
+        arr.splice(values.length, 0, sum);
+    } else {
+        for (let i = 0; i < first_negative; i++) {
+            sum += arr[i];
+        }
+        arr.splice(first_negative + 1, 0, sum);
+    }
+    return arr;
 }
