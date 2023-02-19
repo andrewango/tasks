@@ -143,9 +143,11 @@ export function injectPositive(values: number[]): number[] {
         sum = arr.reduce((total: number, num: number) => total + num, 0);
         arr.splice(values.length, 0, sum);
     } else {
-        for (let i = 0; i < first_negative; i++) {
-            sum += arr[i];
-        }
+        const trimmed_arr = [...values].splice(0, first_negative);
+        sum = trimmed_arr.reduce(
+            (total: number, num: number) => total + num,
+            0
+        );
         arr.splice(first_negative + 1, 0, sum);
     }
     return arr;
