@@ -86,7 +86,21 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    if (colors.length === 0) {
+        return true;
+    } else {
+        const notRGB = colors.filter(
+            (color: string): boolean =>
+                color != "red" && color != "blue" && color != "green"
+        );
+        let a: boolean;
+        if (notRGB.length === 0) {
+            a = true;
+        } else {
+            a = false;
+        }
+        return a;
+    }
 }
 
 /**
