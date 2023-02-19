@@ -136,10 +136,6 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    // first, copy array over
-    // iterate over new arr, if < 0 using findIndex, then and summate with reduce() all numbers up to not including that index
-    // Use splice to insert the sum after that index
-    // if index === -1, no match is found --> reduce normally and append to end of list.
     const arr = [...values];
     const first_negative = arr.findIndex((value: number): boolean => value < 0);
     let sum = 0;
