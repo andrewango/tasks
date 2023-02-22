@@ -110,7 +110,11 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    const new_question = { ...question, name: newName };
+    const new_question = {
+        ...question,
+        options: [...question.options],
+        name: newName
+    };
     return new_question;
 }
 
@@ -122,9 +126,17 @@ export function renameQuestion(question: Question, newName: string): Question {
 export function publishQuestion(question: Question): Question {
     let new_question: Question;
     if (question.published === false) {
-        new_question = { ...question, published: true };
+        new_question = {
+            ...question,
+            options: [...question.options],
+            published: true
+        };
     } else {
-        new_question = { ...question, published: false };
+        new_question = {
+            ...question,
+            options: [...question.options],
+            published: false
+        };
     }
     return new_question;
 }
@@ -140,6 +152,7 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
         ...oldQuestion,
         id: id,
         name: "Copy of " + oldQuestion.name,
+        options: [...oldQuestion.options],
         published: false
     };
     return new_question;
