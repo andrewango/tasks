@@ -52,15 +52,16 @@ export function isValid(question: Question, answer: string): boolean {
             return false;
         }
     } else if (question.type === "multiple_choice_question") {
-        const valid = question.options.filter(
+        const matchingOptions = question.options.filter(
             (word: string): boolean => word == answer
         );
-        if (valid.length === 0) {
+        if (matchingOptions.length === 0) {
             return false;
         } else {
             return true;
         }
     }
+    return false;
 }
 
 /**
