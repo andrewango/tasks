@@ -6,7 +6,15 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    return [];
+    const published_questions = questions
+        .map(
+            (question: Question): Question => ({
+                ...question,
+                options: question.options
+            })
+        )
+        .filter((question: Question): boolean => question.published);
+    return published_questions;
 }
 
 /**
@@ -15,7 +23,20 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    const nonempty_questions = questions
+        .map(
+            (question: Question): Question => ({
+                ...question,
+                options: question.options
+            })
+        )
+        .filter(
+            (question: Question): boolean =>
+                question.body != "" &&
+                question.expected != "" &&
+                question.options.length > 0
+        );
+    return nonempty_questions;
 }
 
 /***
@@ -26,7 +47,14 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
-    return null;
+    const id_question = questions.find(
+        (question: Question): boolean => question.id == id
+    );
+    if (id_question == undefined) {
+        return null;
+    } else {
+        return id_question;
+    }
 }
 
 /**
