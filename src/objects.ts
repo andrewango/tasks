@@ -94,13 +94,11 @@ export function toShortForm(question: Question): string {
 export function toMarkdown(question: Question): string {
     let formatted = "# " + question.name + "\n" + question.body;
     if (question.type === "multiple_choice_question") {
-        formatted +=
-            "\n- " +
-            question.options[0] +
-            "\n- " +
-            question.options[1] +
-            "\n- " +
-            question.options[2];
+        const length = question.options.length;
+        for (let i = 0; i < length - 1; i++) {
+            formatted += "\n- " + question.options[i];
+        }
+        formatted += "\n- " + question.options[length - 1];
     }
     return formatted;
 }
