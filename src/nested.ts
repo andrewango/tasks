@@ -118,7 +118,7 @@ export function toCSV(questions: Question[]): string {
                 `${question.id},${question.name},${question.options.length},${question.points},${question.published}`
         )
         .join("\n");
-    return questionsCSV;
+    return "id,name,options,points,published\n" + questionsCSV;
 }
 
 /**
@@ -127,7 +127,16 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    const copy = [...questions];
+    const answers = copy.map(
+        (question: Question): Answer => ({
+            questionId: question.id,
+            text: "",
+            submitted: false,
+            correct: false
+        })
+    );
+    return answers;
 }
 
 /***
@@ -135,7 +144,14 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
+    const copy = [...questions];
+    const published_arr = copy.map(
+        (question: Question): Question => ({
+            ...question,
+            published: true
+        })
+    );
+    return published_arr;
 }
 
 /***
@@ -143,6 +159,20 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
+    const length = questions.length;
+    const filter_mc = questions.filter(
+        (question: Question): boolean =>
+            question.type === "multiple_choice_question"
+    );
+    const filter_short = questions.filter(
+        (question: Question): boolean =>
+            question.type === "short_answer_question"
+    );
+    if (filter_short.length === length || filter_mc.length === length) {
+        return true;
+    } else {
+        return false;
+    }
     return false;
 }
 
