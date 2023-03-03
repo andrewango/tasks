@@ -270,35 +270,20 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    let new_arr: Question[];
-    if (targetOptionIndex === -1) {
-        new_arr = questions.map((question: Question): Question => {
-            if (question.id === targetId) {
-                return {
-                    ...question,
-                    options: [...question.options, newOption]
-                };
+    return questions.map((question: Question): Question => {
+        if (question.id === targetId) {
+            let new_options: string[];
+            if (targetOptionIndex === -1) {
+                new_options = [...question.options, newOption];
             } else {
-                return { ...question, options: [...question.options] };
+                new_options = [...question.options];
+                new_options.splice(targetOptionIndex, 1, newOption);
             }
-        });
-    } else {
-        new_arr = questions.map((question: Question): Question => {
-            if (question.id === targetId) {
-                return {
-                    ...question,
-                    options: [...question.options].splice(
-                        targetOptionIndex,
-                        1,
-                        newOption
-                    )
-                };
-            } else {
-                return { ...question, options: [...question.options] };
-            }
-        });
-    }
-    return new_arr;
+            return { ...question, options: new_options };
+        } else {
+            return question;
+        }
+    });
 }
 
 /***
