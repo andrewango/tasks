@@ -306,7 +306,8 @@ export function duplicateQuestionInArray(
             options: [...question.options]
         })
     );
-    const new_arr = [...copy].splice(
+    const new_arr = [...copy];
+    new_arr.splice(
         duplicate_index + 1,
         0,
         duplicateQuestion(newId, copy[duplicate_index])
