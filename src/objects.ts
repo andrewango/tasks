@@ -51,7 +51,7 @@ export function isValid(question: Question, answer: string): boolean {
         } else {
             return false;
         }
-    } else if (question.type === "multiple_choice_question") {
+    } else {
         const matchingOptions = question.options.filter(
             (word: string): boolean => word == answer
         );
