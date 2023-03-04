@@ -281,7 +281,8 @@ export function editOption(
             }
             return { ...question, options: new_options };
         } else {
-            return question;
+            const new_options = [...question.options];
+            return { ...question, options: new_options };
         }
     });
 }
