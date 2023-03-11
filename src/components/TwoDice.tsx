@@ -12,6 +12,7 @@ export function d6(): number {
 }
 
 export function TwoDice(): JSX.Element {
+<<<<<<< HEAD
     const [leftDie, setLeftDie] = useState<number>(1);
     const [rightDie, setRightDie] = useState<number>(6);
 
@@ -40,4 +41,7 @@ export function TwoDice(): JSX.Element {
             </div>
         </div>
     );
+=======
+    return <div>Two Dice</div>;
+>>>>>>> upstream/task-components
 }

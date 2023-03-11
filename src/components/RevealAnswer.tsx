@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 export function RevealAnswer(): JSX.Element {
+<<<<<<< HEAD
     const [visible, setVisible] = useState<boolean>(false);
 
     function flipVisibility(): void {
@@ -16,4 +17,7 @@ export function RevealAnswer(): JSX.Element {
             {visible && <div>42</div>}
         </div>
     );
+=======
+    return <div>Reveal Answer</div>;
+>>>>>>> upstream/task-components
 }
