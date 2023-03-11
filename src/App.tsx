@@ -7,9 +7,9 @@ import { TwoDice } from "./components/TwoDice";
 import { CycleHoliday } from "./components/CycleHoliday";
 import { Counter } from "./components/Counter";
 import { DoubleHalf } from "./bad-components/DoubleHalf";
-import { ColoredBox } from "./bad-components/ColoredBox";
-import { ShoveBox } from "./bad-components/ShoveBox";
-import { ChooseTeam } from "./bad-components/ChooseTeam";
+//import { ColoredBox } from "./bad-components/ColoredBox";
+//import { ShoveBox } from "./bad-components/ShoveBox";
+//import { ChooseTeam } from "./bad-components/ChooseTeam";
 
 function App(): JSX.Element {
     return (
@@ -18,25 +18,26 @@ function App(): JSX.Element {
                 UD CISC275 with React Hooks and TypeScript - Andrew Ngo
             </header>
             <hr></hr>
-            {/* <DoubleHalf></DoubleHalf> */}
+            <DoubleHalf></DoubleHalf>
             <hr></hr>
-            <ChooseTeam></ChooseTeam>
+            {/*<ChooseTeam></ChooseTeam>*/}
             <hr></hr>
-            <ColoredBox></ColoredBox>
+            {/*<ColoredBox></ColoredBox>*/}
             <hr></hr>
-            <ShoveBox></ShoveBox>
+            {/*<ShoveBox></ShoveBox>*/}
             <hr></hr>
             <Counter></Counter>
-            <hr />
+            <hr></hr>
             <RevealAnswer></RevealAnswer>
-            <hr />
-            <StartAttempt></StartAttempt>
-            <hr />
-            <TwoDice></TwoDice>
-            <hr />
+            <hr></hr>
             <ChangeType></ChangeType>
-            <hr />
+            <hr></hr>
+            <StartAttempt></StartAttempt>
+            <hr></hr>
+            <TwoDice></TwoDice>
+            <hr></hr>
             <CycleHoliday></CycleHoliday>
+            <hr></hr>
         </div>
     );
 }

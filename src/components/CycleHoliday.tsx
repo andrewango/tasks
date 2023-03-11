@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-<<<<<<< HEAD
 type Holiday = "🎁" | "🧧" | "🥮" | "🦃" | "🤱";
 
 export function CycleHoliday(): JSX.Element {
@@ -55,8 +54,4 @@ export function CycleHoliday(): JSX.Element {
             <Button onClick={rotateChronologically}>Advance by Year</Button>
         </div>
     );
-=======
-export function CycleHoliday(): JSX.Element {
-    return <div>Cycle Holiday</div>;
->>>>>>> upstream/task-components
 }
