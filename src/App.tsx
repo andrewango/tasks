@@ -30,11 +30,11 @@ function App(): JSX.Element {
             <hr></hr>
             <RevealAnswer></RevealAnswer>
             <hr></hr>
-            <ChangeType></ChangeType>
-            <hr></hr>
             <StartAttempt></StartAttempt>
             <hr></hr>
             <TwoDice></TwoDice>
+            <hr></hr>
+            <ChangeType></ChangeType>
             <hr></hr>
             <CycleHoliday></CycleHoliday>
             <hr></hr>
