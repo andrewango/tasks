@@ -21,6 +21,7 @@ export function ChangeColor(): JSX.Element {
                 {COLORS.map((color: string) => (
                     <Form.Check
                         inline
+                        style={{ backgroundColor: `${color}` }}
                         type="radio"
                         name={color}
                         onChange={(e) => setChosenColor(e.target.value)}
